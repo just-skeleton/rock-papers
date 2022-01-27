@@ -3,72 +3,73 @@ function computerPlay() {
     const gameSelect = gameOptions[Math.floor(Math.random() * gameOptions.length)];
     return gameSelect;
 }
-let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
-let computerSelection = computerPlay();
+function newGame() {
+    const newGameOptions = ["yes", "no"];
+    const newGameSelect = newGameOptions[Math.floor(Math.random() * newGameOptions.length)];
+    return newGameSelect;
+}
 let computerScore = 0;
 let playerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock" && computerSelection == "scissors") {
         playerScore++;
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`);
-        return "Player chose rock. Computer chose scissors. Player wins!";  
-    }
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
+        return "Player chose rock. Computer chose scissors. Player wins!";
+    };
     if (playerSelection == "scissors" && computerSelection == "paper") {
         playerScore++
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
         return "Player chose scissors. Computer chose paper. Player wins!";
     };
     if (playerSelection == "paper" && computerSelection == "rock") {
         playerScore++
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
         return "Player chose paper. Computer chose rock. Player wins!";
-    }; 
+    };
     if (playerSelection == "scissors" && computerSelection == "rock") {
         computerScore++;
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
-        return "Computer chose rock. Player chose scissors. Computer wins!";
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
+        return "Player chose scissors. Computer chose rock. Computer wins!";
     };
     if (playerSelection == "paper" && computerSelection == "scissors") {
         computerScore++;
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
-        return "Computer chose scissors. Player chose paper. Computer wins!";
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
+        return "Player chose paper. Computer chose scissors. Computer wins!";
     };
     if (playerSelection == "rock" && computerSelection == "paper") {
         computerScore++;
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
-        return "Computer chose paper. Player chose rock. Computer wins!";
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
+        return "Player chose rock. Computer chose paper. Computer wins!";
     };
-    if (playerSelection == "rock" && computerSelection == "rock" ) {
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
-        return "Computer chose rock. Player chose rock. It's a tie!";
+    if (playerSelection == "rock" && computerSelection == "rock") {
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
+        return "Player chose rock. Computer chose rock. It's a tie!";
     };
     if (computerSelection == "paper" && playerSelection == "paper") {
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
-        return "Computer chose paper. Player chose paper. It's a tie!";
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
+        return "Player chose paper. Computer chose paper.  It's a tie!";
     };
-    if (playerSelection == "scissors" && computerSelection == "scissors" ) {
-        console.log(`Game score: Computer = ${computerScore} | Player = ${playerScore}`)
-        return "Computer chose scissors. Player chose scissors. It's a tie!";
+    if (playerSelection == "scissors" && computerSelection == "scissors") {
+        console.log(`---- Game score: Player = ${playerScore} | Computer = ${computerScore} ----`)
+        return "Player chose scissors. Computer chose scissors. It's a tie!";
     };
-  };
+};
 
-// console.log(game());
-// console.log(playRound(computerSelection, playerSelection));
 function game() {
-    console.log(playRound(computerSelection, playerSelection));
+    while (computerScore < 5 && playerScore < 5) {
+        let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+        let computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+    console.log("GAME OVER")
+    if (playerScore > computerScore) {
+        console.log("Player Wins")
+    } else if (playerScore == computerScore) {
+        console.log("Tie")
+    } else {
+        console.log("Computer Wins");
+    }
 }
 
 game();
-/*
-}
-console.log("Game over")
-if(playerScore > computerScore) {
-    console.log("Player Wins")
-} else if (playerScore == computerScore) {
-    console.log("Tie")
-} else {
-    console.log("Computer Wins");
-}
-}
-*/
