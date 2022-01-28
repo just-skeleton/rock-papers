@@ -3,11 +3,7 @@ function computerPlay() {
     const gameSelect = gameOptions[Math.floor(Math.random() * gameOptions.length)];
     return gameSelect;
 }
-function newGame() {
-    const newGameOptions = ["yes", "no"];
-    const newGameSelect = newGameOptions[Math.floor(Math.random() * newGameOptions.length)];
-    return newGameSelect;
-}
+
 let computerScore = 0;
 let playerScore = 0;
 
